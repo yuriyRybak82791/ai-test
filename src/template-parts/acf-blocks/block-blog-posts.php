@@ -110,14 +110,14 @@ if ( $blog_posts_hide ) {
             echo paginate_links(
                 array(
                     'total' => $query->max_num_pages,
-                    'current' => max( 1, get_query_var( 'paged' ) ),
+                    'current' => max(1, get_query_var('paged')),
                     'prev_next' => true,
-                    'prev_text' => '<svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0.999999 9L5 5L1 1" stroke="#6D052A"/>
-                    </svg>',
-                    'next_text' => '<svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 1L1 5L5 9" stroke="#6D052A"/>
-                    </svg>',
+                    'prev_text' => '<svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">' .
+                        '<path d="M0.999999 9L5 5L1 1" stroke="#6D052A"/>' .
+                        '</svg>',
+                    'next_text' => '<svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">' .
+                        '<path d="M5 1L1 5L5 9" stroke="#6D052A"/>' .
+                        '</svg>',
                     'format' => 'page/%#%/#blog-posts',
                     'add_args' => $add_args,
                 )
