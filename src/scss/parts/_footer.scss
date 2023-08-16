@@ -1,0 +1,169 @@
+.site-footer {
+    background-color: $white;
+    text-align: center;
+    @include media-breakpoint-up(md) {
+        text-align: unset;
+    }
+
+    &__container {
+        @include media-breakpoint-up(xxl) {
+            max-width: 1320px;
+        }
+    }
+
+    &__menu, &__bottom-menu {
+        @extend .list-reset;
+        display: inline-flex;
+        color: $color-lighter;
+        line-height: 1.5;
+        gap: calc($spacer * 3);
+        @include media-breakpoint-up(xl) {
+            gap: calc($spacer * 4);
+        }
+        @include media-breakpoint-up(xxl) {
+            gap: calc($spacer * 5);
+        }
+
+        .menu-item {
+            margin-bottom: $spacer;
+
+            &:not(:last-child) {
+                margin-bottom: $spacer;
+            }
+        }
+
+        a {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .sub-menu {
+            @extend .list-reset;
+            color: $color-brightest;
+            margin-top: $spacer;
+        }
+
+        &-list {
+
+        }
+    }
+
+    &__menu {
+        font-size: 14px;
+
+        @include media-breakpoint-down(sm) {
+            width: 100%;
+            flex-direction: column;
+            gap: 0;
+
+            > .menu-item {
+                margin-bottom: 0;
+
+                > a, > span {
+                    padding: calc($spacer * 2) 0;
+                    display: inline-block;
+                }
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-brightest;
+                }
+
+                .sub-menu {
+                    overflow: hidden;
+                    transition: max-height .3s;
+                    max-height: 0;
+
+                    > .menu-item {
+                        margin-bottom: calc($spacer * 3);
+                    }
+                }
+
+                &-has-children {
+
+                    .sub-menu-toggle {
+                        cursor: pointer;
+                        display: inline-block;
+                        width: calc($spacer * 3);
+                        height: calc($spacer * 2);
+                        padding: calc($spacer * 3) 0;
+                        background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOCIgaGVpZ2h0PSI2IiB2aWV3Qm94PSIwIDAgOCA2IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMC41IDAuODAwNzgxTDQgNC44MDA3OEw3LjUgMC44MDA3ODEiIHN0cm9rZT0iIzZGNkY2RiIvPgo8L3N2Zz4K");
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        transition: transform .3s;
+                        vertical-align: middle;
+                    }
+
+                    &.active {
+                        .sub-menu-toggle {
+                            transform: scaleY(-1);
+                        }
+                    }
+
+                    > a {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+
+                }
+
+            }
+        }
+
+    }
+
+    &__bottom-menu {
+        font-size: 12px;
+        @include media-breakpoint-down(sm) {
+            flex-wrap: wrap;
+            gap:0;
+            .menu-item {
+                width: 50%;
+                text-align: center;
+            }
+        }
+    }
+
+    .custom-logo {
+        width: 85px;
+        height: auto;
+
+        &-link {
+            display: inline-block;
+        }
+    }
+
+    .social-media-links {
+        display: inline-flex;
+        gap: calc($spacer * 3);
+        align-items: center;
+
+        &__link {
+            display: block;
+
+            svg {
+                display: block;
+                max-width: 22px;
+                max-height: 22px;
+                width: auto;
+                height: auto;
+
+                path {
+                    fill: $color-brand-dark;
+                    transition: fill .3s;
+                }
+            }
+
+            &:hover {
+                svg path {
+                    fill: $color-brand;
+                }
+            }
+        }
+    }
+
+    &__copyrights {
+        font-size: 14px;
+        direction: ltr;
+    }
+}

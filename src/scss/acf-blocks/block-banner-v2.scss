@@ -1,0 +1,81 @@
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+@import "../parts/variables";
+@import "../parts/mixin";
+
+.page-banner-v2 {
+    position: relative;
+    padding-bottom: calc($spacer * 5);
+    overflow: hidden;
+    @include media-breakpoint-up(lg) {
+        padding-bottom: calc($spacer * 8);
+    }
+
+    &__image {
+        width: 100%;
+        height: 290px;
+        object-fit: cover;
+        display: block;
+    }
+
+    &__content {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        bottom: 0;
+        left: 0;
+    }
+
+    &__title {
+        color: transparent;
+        position: relative;
+        isolation: isolate;
+        display: block;
+        font-size: 100px;
+        line-height: .95;
+        @include media-breakpoint-up(lg) {
+            font-size: 160px;
+        }
+
+        &_bg {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 100vw;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: $color-burgundy;
+            z-index: -1;
+            height: 75%;
+            @include media-breakpoint-up(sm) {
+                height: 50%;
+            }
+        }
+
+        &:after, &:before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            content: attr(data-text);
+
+        }
+
+        &:before {
+            color: $white;
+            clip-path: polygon(0 0%, 100% 0%, 100% 25%, 0% 25%);
+            @include media-breakpoint-up(sm) {
+                clip-path: polygon(0 0%, 100% 0%, 100% 50%, 0% 50%);
+            }
+        }
+
+        &:after {
+            clip-path: polygon(0 25%, 100% 25%, 100% 100%, 0% 100%);
+            color: $color-brand;
+            @include media-breakpoint-up(sm) {
+                clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0% 100%);
+            }
+        }
+    }
+}

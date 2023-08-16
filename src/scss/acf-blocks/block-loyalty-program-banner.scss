@@ -1,0 +1,354 @@
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+@import "../parts/variables";
+@import "../parts/mixin";
+
+.loyalty-program-banner{
+    margin-top: 60px;
+    margin-bottom: 80px;
+    @include media-breakpoint-up(lg){
+        margin-top: 94px;
+        margin-bottom: 100px;
+    }
+    .loyalty-program{
+        margin-bottom: 0;
+        margin-top: -26px;
+        position: relative;
+        z-index: 100;
+        @include media-breakpoint-up(sm){
+            margin-top: -52px;
+        }
+        @include media-breakpoint-up(lg){
+            margin-top: -250px;
+        }
+        @include media-breakpoint-up(xl){
+            margin-top: -330px;
+        }
+    }
+    &__banner{
+        width: 100%;
+        height: 532px;
+        position: relative;
+        isolation: isolate;
+        @include media-breakpoint-up(sm){
+            height: 700px;
+        }
+        @include media-breakpoint-up(lg){
+            height: 960px;
+        }
+        @include media-breakpoint-up(xl){
+            height: 1096px;
+        }
+        &-img{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-attachment: fixed;
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-size: cover;
+            &-desktop{
+                display: none;
+                @include media-breakpoint-up(sm){
+                    display: block;
+                }
+            }
+            &-mobile{
+                display: block;
+                @include media-breakpoint-up(sm){
+                    display: none;
+                }
+            }
+        }
+    }
+    &__container{
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        padding-top: 38px;
+        padding-bottom: 58px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        @include media-breakpoint-up(sm){
+            padding-top: 70px;
+            padding-bottom: 100px;
+        }
+        @include media-breakpoint-up(lg){
+            padding-top: 90px;
+            padding-bottom: 300px;
+        }
+        @include media-breakpoint-up(xl){
+            padding-top: 130px;
+            padding-bottom: 395px;
+        }
+    }
+    &__main-title{
+        direction: ltr;
+        color: $white;
+        max-width: 225px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-size: 50px;
+        line-height: 50px;
+        @include media-breakpoint-up(sm){
+            font-size: 75px;
+            line-height: 75px;
+            max-width: 340px;
+        }
+        @include media-breakpoint-up(lg){
+            //margin-top: 130px;
+            max-width: 270px;
+            margin-inline-end: auto;
+            margin-right: unset;
+            font-size: 100px;
+            line-height: 100px;
+            text-align: initial;
+        }
+    }
+    &__content{
+        max-width: 232px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        @include media-breakpoint-up(sm) {
+            margin-right: auto;
+            max-width: 300px;
+        }
+        @include media-breakpoint-up(lg) {
+            margin-right: unset;
+            text-align: initial;
+            max-width: 350px;
+        }
+    }
+    &__title{
+        font-size: 32px;
+        line-height: 1;
+        font-family: $font-primary;
+        font-weight: 600;
+        color: $white;
+        @include media-breakpoint-up(sm) {
+            font-size: 40px;
+            line-height: 40px;
+        }
+        @include media-breakpoint-up(lg) {
+            line-height: 50px;
+            font-size: 50px;
+        }
+    }
+    &__text{
+        font-size: 16px;
+        line-height: 1;
+        color: $white;
+        @include media-breakpoint-up(sm) {
+            font-size: 20px;
+            line-height: 24px;
+        }
+        @include media-breakpoint-up(lg) {
+            font-size: 25px;
+            line-height: 30px;
+        }
+    }
+    &__button-wrapper{
+        margin-top: 15px;
+        @include media-breakpoint-up(lg) {
+            margin-top: 24px;
+        }
+    }
+}
+
+.loyalty-program{
+    &__container{
+
+    }
+    &__line{
+        display: flex;
+        height: 202px;
+        background-color: $color-brand-lighter;
+        @include media-breakpoint-up(lg){
+            height: 250px;
+        }
+        @include media-breakpoint-up(xl){
+            height: 330px;
+        }
+        &-2{
+            flex-direction: row-reverse;
+            @include media-breakpoint-up(md){
+                flex-direction: row;
+            }
+        }
+    }
+    &__text-block{
+        &-1,
+        &-2{
+            display: none;
+            width: 50%;
+            @include media-breakpoint-up(md){
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+    &__text{
+        color: $color-burgundy;
+        font-size: 140px;
+        line-height: 1;
+        @include media-breakpoint-up(lg){
+            font-size: 185px;
+        }
+        @include media-breakpoint-up(xl){
+            font-size: 253px;
+            margin-bottom: -25px;
+        }
+    }
+    &__mobile-text-block{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        padding: 15px 6px;
+        background-image: url('../../images/loyalty-mob-bg.svg');
+        background-position: center;
+        background-size: cover;
+        text-align: center;
+        @include media-breakpoint-up(md){
+            display: none;
+        }
+    }
+    &__mobile-text{
+        font-size: 68px;
+        line-height: 68px;
+        color: $white;
+    }
+    &__line-block{
+        &-1{
+            display: none;
+            width: 29%;
+            background-image: url('../../images/loyalty-desktop-bg.svg');
+            background-position: center;
+            background-size: cover;
+            @include media-breakpoint-up(md){
+                display: block;
+            }
+            @include media-breakpoint-up(lg){
+                width: 27.34%;
+            }
+        }
+        &-2{
+            width: 50%; 
+            background-image: url('../../images/loyalty-mob-bg-2.svg');
+            background-position: center;
+            background-size: cover;
+            padding: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include media-breakpoint-up(md){
+                width: 29%;
+                background-image: url('../../images/loyalty-mob-bg.svg');
+            }
+            @include media-breakpoint-up(lg){
+                width: 27.34%;
+            }
+        }
+        &-3{
+            width: 50%;
+            @include media-breakpoint-up(md) {
+                width: 74%;
+            }
+            @include media-breakpoint-up(lg){
+                width: 77.34%;
+            }
+        }
+    }
+    &__logo{
+        width: auto;
+        height: 100%;
+        max-width: 100%;
+        display: block;
+        @include media-breakpoint-up(xl){
+            max-width: 207px;
+        }
+    }
+    &__line-net-video{
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    &__video{
+        width: 50%;
+        @include media-breakpoint-up(md) {
+            width: 26%;
+        }
+        @include media-breakpoint-up(lg){
+            width: 22.66%;
+        }
+        &-link{
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            *{
+                pointer-events: none;
+            }
+            &::before{
+                content: '';
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 10;
+                background-color: rgba($color-red, 0.5);
+            }
+        }
+        &-preview{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        &-subtitle,
+        &-title{
+            position: absolute;
+            right: 0;
+            width: 100%;
+            z-index: 20;
+        }
+        &-subtitle{
+            font-size: 16px;
+            line-height: 19px;
+            color: $white;
+            padding: 6px 9px;
+            top: 0;
+            @include media-breakpoint-up(xl){
+                padding: 12px 15px;
+                font-size: 15px;
+                line-height: 16px;
+            }
+        }
+        &-title{
+            font-weight: 600;
+            flex: 15px;
+            line-height: 18px;
+            padding: 10px 14px;
+            bottom: 0;
+            color: $white;
+            @include media-breakpoint-up(xl){
+                padding: 16px 22px;
+                font-size: 22px;
+                line-height: 24px;
+            }
+        }
+    }
+    
+}

@@ -1,0 +1,176 @@
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+@import "../parts/variables";
+@import "../parts/mixin";
+
+.partners-slider {
+    display: block;
+
+    &__slide {
+        &-content {
+            background-color: $color-brand-dark;
+            color: $white;
+        }
+
+        &-logo-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $white;
+            width: 82px;
+            height: 76px;
+            @include media-breakpoint-up(lg) {
+                width: 98px;
+                height: 93px;
+            }
+        }
+
+        &-heading {
+            width: calc(100% - 82px);
+            order: -1;
+            @include media-breakpoint-up(lg) {
+                width: 100%;
+                order: unset;
+            }
+        }
+
+        &-title {
+            font-family: $font-primary;
+            text-transform: none;
+            font-weight: 600;
+            line-height: 1;
+            font-size: 26px;
+            @include media-breakpoint-up(lg) {
+                font-size: 34px;
+            }
+        }
+
+        &-text {
+            font-size: 18px;
+            @include media-breakpoint-up(lg) {
+                font-size: 20px;
+            }
+        }
+
+        &-body {
+            border-top: 1px solid rgba($white, .5);
+            border-bottom: 1px solid rgba($white, .5);
+        }
+
+        &-second-title {
+            font-size: 48px;
+            font-family: $font-primary;
+            text-transform: none;
+            font-weight: 700;
+            line-height: 1;
+            @include media-breakpoint-up(lg) {
+                font-size: 62px;
+            }
+        }
+
+        &-description {
+            color: rgba($white, .7);
+            font-size: 15px;
+            @include media-breakpoint-up(lg) {
+                font-size: 16px;
+            }
+        }
+
+        &-image {
+            display: block;
+            width: 100%;
+            height: 100% !important;
+            object-fit: cover;
+        }
+    }
+
+
+    .swiper-button {
+        background-color: $white;
+        width: 52px;
+        height: 52px;
+        bottom: 50px;
+        top: unset;
+        margin: 0;
+        right: unset;
+        z-index: 1;
+
+        &.swiper-button-disabled {
+            opacity: 1;
+
+            &:after {
+                opacity: .5;
+            }
+        }
+
+        &:after {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            content: "";
+            top: 0;
+            left: 0;
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOSIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDkgMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNy4wNzYzOCAxNC44MTA2TDAuMzEzMDExIDguMjgxMDNDLTAuMTAyMDIyIDcuODgwMzUgLTAuMTAyMDIyIDcuMjMwNzEgMC4zMTMwMTIgNi44MzAwMkw3LjA3NjM4IDAuMzAwNDg3QzcuNDkxNDIgLTAuMTAwMTk4IDguMTY0MzIgLTAuMTAwMTk4IDguNTc5MzUgMC4zMDA0ODdDOC45OTQzOSAwLjcwMTE3MiA4Ljk5NDM5IDEuMzUwODEgOC41NzkzNSAxLjc1MTVMMi41Njc0NyA3LjU1NTUzTDguNTc5MzUgMTMuMzU5NkM4Ljk5NDM4IDEzLjc2MDIgOC45OTQzOCAxNC40MDk5IDguNTc5MzUgMTQuODEwNkM4LjE2NDMyIDE1LjIxMTMgNy40OTE0MSAxNS4yMTEzIDcuMDc2MzggMTQuODEwNloiIGZpbGw9IiM0OTQ5NDkiLz4KPC9zdmc+Cg==");
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    }
+
+    .swiper-button-prev {
+        left: 0;
+
+        &:before {
+            height: 32px;
+            right: 0;
+            width: 1px;
+            position: absolute;
+            content: "";
+            background-color: #494949;
+            opacity: .35;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    .swiper-button-next {
+        left: 52px;
+
+        &:after {
+            transform: scaleX(-1);
+        }
+    }
+
+    .swiper-rtl, .swiper-ltr {
+        .swiper-button-prev, .swiper-button-next {
+            @extend .swiper-button;
+        }
+
+        .swiper-button-next {
+            @extend .swiper-button-next;
+        }
+
+        .swiper-button-prev {
+            @extend .swiper-button-prev;
+        }
+    }
+
+    .swiper-pagination {
+        bottom: calc($spacer * 4);
+        display: flex;
+        justify-content: center;
+
+        .swiper-pagination-bullet {
+            display: block;
+            width: 10px;
+            height: 10px;
+            border: 1px solid $black;
+            margin: 0 5px;
+            background-color: $white;
+            transition: background-color .3s;
+
+            &-active {
+                background-color: $black;
+            }
+        }
+    }
+}

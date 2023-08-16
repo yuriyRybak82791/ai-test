@@ -1,0 +1,214 @@
+@use "sass:map";
+
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+@import "../parts/variables";
+@import "../parts/mixin";
+
+.cta-section {
+    overflow: hidden;
+    @include media-breakpoint-up(lg) {
+        padding: 65px 0;
+    }
+
+    &__content {
+        background-color: $color-brand-dark;
+        position: relative;
+        padding: 28px calc($spacer * 2) 60px;
+        width: calc(100% + $spacer * 4);
+        margin: 0 (-$spacer * 2);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include media-breakpoint-up(lg) {
+            align-items: initial;
+        }
+        &:before {
+            top: 0;
+            height: 100%;
+            width: 100vw;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+            background-color: $color-brand-dark;
+            position: absolute;
+            content: "";
+            @include media-breakpoint-up(lg) {
+                display: none;
+                background-color: $color-brand-lighter;
+            }
+        }
+
+        @include media-breakpoint-up(lg) {
+            margin: 0;
+            width: 56%;
+            padding: 100px 26px 70px 84px;
+        }
+        @include media-breakpoint-up(xl) {
+            padding: 80px 120px 80px 90px;
+        }
+    }
+
+    &__content-wrapper{
+        max-width: 310px;
+        text-align: center;
+        @include media-breakpoint-up(lg){
+            text-align: initial;
+            max-width: none;
+        }
+    }
+
+    &__text {
+        color: $white;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 1.05;
+        @include media-breakpoint-up(lg){
+            font-size: 40px;
+        }
+    }
+
+    &__line {
+        background-image: url('../../images/contact-us-left-bg.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: calc(100% - 25px);
+        @each $breakpoint in (lg, xl, xxl) {
+            @include media-breakpoint-up($breakpoint) {
+                width: calc(((100vw - #{map.get($container-max-widths, $breakpoint)}) / 2) + 25px + ($spacer * 2));
+            }
+        }
+    }
+
+    &__aside {
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        @include media-breakpoint-up(lg) {
+            width: 44%;
+        }
+
+        @include media-breakpoint-up(xl) {
+            padding-right: 65px;
+        }
+
+        @include media-breakpoint-up(xxl) {
+            padding-right: 88px;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            background-image: url('../../images/cta-right-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100%;
+            top: 0;
+            left: calc(42% - 2px);
+            width: calc(59% + ($spacer * 2));
+
+            @each $breakpoint in (sm, md) {
+                @include media-breakpoint-up($breakpoint) {
+                    width: calc(((100vw - #{map.get($container-max-widths, $breakpoint)}) / 2) + 58% + $spacer * 2);
+                }
+            }
+
+            @include media-breakpoint-up(lg) {
+                height: calc(100% + 80px);
+                left: calc(45% - 2px);
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            @each $breakpoint in (sm,md,lg, xl, xxl) {
+                @include media-breakpoint-up($breakpoint) {
+                    width: calc(((100vw - #{map.get($container-max-widths, $breakpoint)}) / 2) + 65% + ($spacer * 2));
+                }
+            }
+        }
+    }
+
+    &__title {
+        position: relative;
+        width: 100%;
+        font-family: $font-secondary;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding: 100px 0;
+        font-size: 120px;
+        line-height: .95;
+        text-align: center;
+        color: transparent;
+        @include media-breakpoint-up(lg) {
+            font-size: 140px;
+            text-align: unset;
+            margin-inline-start: -18px;
+        }
+        @include media-breakpoint-up(xxl) {
+            font-size: 160px;
+        }
+
+        &_bg {
+            content: "";
+            position: absolute;
+            background-color: $color-brand-lighter;
+            z-index: -1;
+            height: 100%;
+            top: 0;
+            right: 58%;
+            width: calc(42% + ($spacer * 2));
+            @each $breakpoint in (sm, md) {
+                @include media-breakpoint-up($breakpoint) {
+                    width: calc(((100vw - #{map.get($container-max-widths, $breakpoint)}) / 2) + 42% + $spacer * 2);
+                }
+            }
+
+            @include media-breakpoint-up(lg) {
+                right: unset;
+                width: 65%;
+                left: -18px;
+                height: calc(100% + 130px);
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+
+        &:before, &:after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            bottom: 0;
+            content: attr(data-text);
+            display: flex;
+            align-items: center;
+        }
+
+        &:before {
+            color: $color-brand;
+            clip-path: polygon(0 0, 42% 0, 42% 100%, 0 100%);
+            @include media-breakpoint-up(lg) {
+                clip-path: polygon(0 0, calc(65% - 18px) 0, calc(65% - 18px) 100%, 0 100%);
+            }
+        }
+
+        &:after {
+            color: $white;
+            clip-path: polygon(42% 0, 100% 0, 100% 100%, 42% 100%);
+            @include media-breakpoint-up(lg) {
+                clip-path: polygon(calc(65% - 18px) 0, 100% 0, 100% 100%, calc(65% - 18px) 100%);
+            }
+        }
+    }
+
+}

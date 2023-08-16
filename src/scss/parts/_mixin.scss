@@ -1,0 +1,183 @@
+@use "sass:map";
+@use "sass:math";
+
+@mixin custom-scrollbar {
+    //overflow-y: auto;
+	
+    &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+	
+    &::-webkit-scrollbar-track {
+        border-radius: 5px;
+        background: $white;
+    }
+	
+    &::-webkit-scrollbar-thumb {
+        transition: background-color .15s;
+        border-radius: 5px;
+        background: #B4B4B4;
+    }
+	
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba(#B4B4B4, .8);
+    }
+	
+    &::-webkit-scrollbar-thumb:active {
+        background: rgba(#B4B4B4, .9);
+    }
+}
+
+@mixin h1 {
+    font-size: $h1-font-size;
+    line-height: $h1-line-height;
+}
+
+@mixin h2 {
+    font-size: $h2-font-size;
+    line-height: $h2-line-height;
+}
+
+@mixin h3 {
+    font-size: $h3-font-size;
+    line-height: $h3-line-height;
+}
+
+@mixin h4 {
+    font-size: $h4-font-size;
+    line-height: $h4-line-height;
+}
+
+@mixin h5 {
+    font-size: $h5-font-size;
+    line-height: $h5-line-height;
+}
+
+@mixin h6 {
+    font-size: $h6-font-size;
+    line-height: $h6-line-height;
+}
+
+@mixin make-responsive-headers() {
+    h1 {
+        @include h1;
+    }
+    h2 {
+        @include h2;
+    }
+    h3 {
+        @include h3;
+    }
+    h4 {
+        @include h4;
+    }
+    h5 {
+        @include h5;
+    }
+    h6 {
+        @include h6;
+    }
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        @include media-breakpoint-up($breakpoint) {
+            $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+			
+            .h1#{$infix} {
+                @include h1;
+            }
+            .h2#{$infix} {
+                @include h2;
+            }
+            .h3#{$infix} {
+                @include h3;
+            }
+            .h4#{$infix} {
+                @include h4;
+            }
+            .h5#{$infix} {
+                @include h5;
+            }
+            .h6#{$infix} {
+                @include h6;
+            }
+        }
+    }
+}
+
+
+
+// ==============================
+// Responsive font size mixin
+// ==============================
+
+//  default font scale bounding
+$font-lock-min: "sm" !default;
+$font-lock-max: "xl" !default;
+
+
+//  responsive font-size
+@mixin responsive-font-size(
+    $min,
+    $max: null,
+    $lock-min: $font-lock-min,
+    $lock-max: $font-lock-max
+) {
+    & {
+        font-size: $min;
+    }
+    @if $max {
+        @media (min-width: map.get($grid-breakpoints, $font-lock-min)) and (max-width: map.get($grid-breakpoints, $font-lock-max)) {
+            & {
+                font-size: calc(
+                    #{$min} +
+                    #{strip-unit($max) - strip-unit($min)} *
+                    (100vw - #{map.get($grid-breakpoints, $font-lock-min)}) /
+                    #{strip-unit(map.get($grid-breakpoints, $font-lock-max)) - strip-unit(map.get($grid-breakpoints, $font-lock-min))}
+                );
+            }
+        }
+        @media (min-width: map.get($grid-breakpoints, $font-lock-max)) {
+            & {
+                font-size: $max;
+            }
+        }
+    }
+}
+
+//  strip units helper function
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return math.div($number, $number * 0 + 1);
+    }
+	
+    @return $number;
+}
+
+//  responsive width
+@mixin responsive-width(
+    $min,
+    $max: null,
+    $lock-min: $font-lock-min,
+    $lock-max: $font-lock-max
+) {
+    & {
+        width: $min;
+    }
+    @if $max {
+        @media (min-width: map.get($grid-breakpoints, $font-lock-min)) and (max-width: map.get($grid-breakpoints, $font-lock-max)) {
+            & {
+                width: calc(
+                    #{$min} +
+                    #{strip-unit($max) - strip-unit($min)} *
+                    (100vw - #{map.get($grid-breakpoints, $font-lock-min)}) /
+                    #{strip-unit(map.get($grid-breakpoints, $font-lock-max)) - strip-unit(map.get($grid-breakpoints, $font-lock-min))}
+                );
+            }
+        }
+        @media (min-width: map.get($grid-breakpoints, $font-lock-max)) {
+            & {
+                width: $max;
+            }
+        }
+    }
+}

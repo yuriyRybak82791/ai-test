@@ -1,0 +1,158 @@
+.site-header {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    top: 0;
+    z-index: 9991;
+    transition: background-color .3s;
+
+    &.sticky {
+        background-color: $white;
+
+        .menu-btn:not(.open) span {
+            background-color: $black;
+        }
+
+        @include media-breakpoint-up(sm) {
+            .site-header__logo-wrap {
+                height: 70px;
+            }
+            .custom-logo, .custom-logo-link {
+                width: 44px;
+            }
+        }
+    }
+
+    &__container {
+        position: relative;
+        z-index: 1;
+        max-width: 1920px;
+    }
+
+    .custom-logo, .custom-logo-link {
+        display: block;
+        width: 44px;
+        height: auto;
+        transition: width .3s;
+        @include media-breakpoint-up(sm) {
+            width: 64px;
+        }
+    }
+
+    &__logo-wrap {
+        gap: 80px;
+        height: 70px;
+        position: relative;
+        transition: height .3s;
+        @include media-breakpoint-up(sm) {
+            height: 88px;
+            background-color: $white;
+        }
+
+        &:after {
+            background-color: $white;
+            content: "";
+            height: 100%;
+            position: absolute;
+            width: 100vw;
+            z-index: -1;
+            display: none;
+            @include media-breakpoint-up(sm) {
+                display: block;
+            }
+        }
+
+        &_rtl {
+            flex-direction: row-reverse;
+            @include media-breakpoint-up(sm) {
+                flex-direction: row;
+            }
+
+            &:after {
+                left: 100%;
+            }
+        }
+
+        &_ltr:after {
+            right: 100%;
+        }
+    }
+
+    .menu-btn {
+        position: relative;
+        border: 0;
+        padding: 0;
+        background-color: transparent;
+        cursor: pointer;
+        width: 27px;
+        height: 19px;
+
+        @include media-breakpoint-up(sm) {
+            width: 18px;
+            height: 15px;
+        }
+
+        &.open {
+            span:nth-child(1) {
+                width: 0;
+                left: 50%;
+                top: 8px;
+                @include media-breakpoint-up(sm) {
+                    top: 8px;
+                }
+            }
+
+            span:nth-child(2) {
+                transform: rotate(45deg);
+            }
+
+            span:nth-child(3) {
+                transform: rotate(-45deg);
+            }
+
+            span:nth-child(4) {
+                width: 0;
+                left: 50%;
+                top: 8px;
+                @include media-breakpoint-up(sm) {
+                    top: 8px;
+                }
+            }
+        }
+
+        span {
+            pointer-events: none;
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .3s linear;
+            background: $white;
+            @include media-breakpoint-up(sm) {
+                background: $black;
+            }
+
+            &:nth-child(1) {
+                top: 0;
+            }
+
+            &:nth-child(2),
+            &:nth-child(3) {
+                top: 8px;
+                @include media-breakpoint-up(sm) {
+                    top: 6px;
+                }
+            }
+
+            &:nth-child(4) {
+                top: 16px;
+                @include media-breakpoint-up(sm) {
+                    top: 12px;
+                }
+            }
+        }
+    }
+}

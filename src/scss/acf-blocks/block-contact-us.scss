@@ -1,0 +1,309 @@
+@use "sass:map";
+
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+@import "../parts/variables";
+@import "../parts/mixin";
+
+.section-contact-us {
+    overflow: hidden;
+    @include media-breakpoint-up(lg) {
+        padding: 38px 0 36px;
+    }
+    .contact-us {
+
+        &__form {
+            background-color: $color-brand-lighter;
+            position: relative;
+            padding:28px calc($spacer * 2) 60px;
+            width: calc(100% + $spacer * 4);
+            margin: 0 (-$spacer * 2);
+            &:before {
+                top: 0;
+                height: 100%;
+                width: 100vw;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: -1;
+                background-color: $color-brand-lighter;
+                position: absolute;
+                content: "";
+                @include media-breakpoint-up(lg) {
+                    display: none;
+                }
+            }
+
+            @include media-breakpoint-up(lg) {
+                margin: 0;
+                width: 56%;
+                padding: 68px 26px 68px 84px;
+            }
+            @include media-breakpoint-up(xl) {
+                padding: 68px 84px 78px;
+            }
+        }
+
+        &__line {
+            background-image: url('../../images/contact-us-left-bg.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: calc(100% - 70px);
+            @each $breakpoint in (lg, xl, xxl) {
+                @include media-breakpoint-up($breakpoint) {
+                    width: calc(((100vw - #{map.get($container-max-widths, $breakpoint)}) / 2) + 70px + ($spacer * 2));
+                }
+            }
+        }
+
+        &__aside {
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            @include media-breakpoint-up(lg) {
+                width: 44%;
+            }
+
+            &:after {
+                content: "";
+                position: absolute;
+                background-image: url('../../images/contact-us-right-bg.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                height: 100%;
+                top: 0;
+                left: calc(42% - 2px);
+                width: calc(58% + 18px);
+
+                @each $breakpoint in (sm, md) {
+                    @include media-breakpoint-up($breakpoint) {
+                        width: calc(((100vw - #{map.get($container-max-widths, $breakpoint)}) / 2) + 58% + $spacer * 2);
+                    }
+                }
+
+                @include media-breakpoint-up(lg) {
+                    height: calc(100% - 80px);
+                    left: calc(56% - 2px);
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+
+                @each $breakpoint in (lg, xl, xxl) {
+                    @include media-breakpoint-up($breakpoint) {
+                        width: calc(((100vw - #{map.get($container-max-widths, $breakpoint)}) / 2) + 44% + ($spacer * 2));
+                    }
+                }
+            }
+        }
+
+        &__title {
+            position: relative;
+            width: 100%;
+            font-family: $font-secondary;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 66px 0;
+            font-size: 100px;
+            line-height: .95;
+            text-align: center;
+            color: transparent;
+            @include media-breakpoint-up(lg) {
+                font-size: 112.903px;
+                text-align: unset;
+                margin-inline-start: -18px;
+            }
+
+            &_bg {
+                content: "";
+                position: absolute;
+                background-color: $color-brand-dark;
+                z-index: -1;
+                left: 0;
+                height: 100%;
+                top: 0;
+                right: 58%;
+                width: calc(42% + ($spacer * 2));
+                @each $breakpoint in (sm, md) {
+                    @include media-breakpoint-up($breakpoint) {
+                        width: calc(((100vw - #{map.get($container-max-widths, $breakpoint)}) / 2) + 42% + $spacer * 2);
+                    }
+                }
+
+                @include media-breakpoint-up(lg) {
+                    right: unset;
+                    width: 56%;
+                    left: -18px;
+                    height: calc(100% + 80px);
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+
+            &:before, &:after {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                bottom: 0;
+                content: attr(data-text);
+                display: flex;
+                align-items: center;
+            }
+
+            &:before {
+                color: $color-brand;
+                clip-path: polygon(0 0, 41% 0, 41% 100%, 0 100%);
+                @include media-breakpoint-up(lg) {
+                    clip-path: polygon(0 0, 52.5% 0, 52.5% 100%, 0 100%);
+                }
+            }
+
+            &:after {
+                color: $white;
+                clip-path: polygon(41% 0, 100% 0, 100% 100%, 41% 100%);
+                @include media-breakpoint-up(lg) {
+                    clip-path: polygon(52.5% 0, 100% 0, 100% 100%, 52.5% 100%);
+                }
+            }
+        }
+    }
+
+    .wpcf7 {
+        position: relative;
+        max-width: 400px;
+        width: 100%;
+        margin: 0 auto;
+        @include media-breakpoint-up(lg) {
+            margin: 0;
+        }
+
+        &-form {
+
+            &-control-wrap {
+                display: block;
+            }
+        }
+
+        &-form-label {
+            display: block;
+            font-weight: 600;
+            color: $black;
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+
+        &-text, &-textarea {
+            display: block;
+            width: 100%;
+            border: 1px solid #A7A7A7;
+            background: $white;
+            padding: calc($spacer * 2);
+            direction: rtl;
+            border-radius: 0;
+        }
+
+        input {
+            &[type="url"], &[type="email"], &[type="tel"] {
+                direction: rtl;
+            }
+        }
+
+        &-text {
+            height: 50px;
+            &:focus-visible {
+                outline: 0;
+            }
+        }
+
+        &-textarea {
+            height: 140px;
+            resize: none;
+        }
+
+
+        &-form-item {
+            margin-bottom: 15px;
+        }
+
+        &-form-submit{
+            margin-top: 44px;
+            @include media-breakpoint-up(lg) {
+                margin-top: 34px;
+            }
+        }
+
+        .btn {
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            @include media-breakpoint-up(lg){
+                margin: unset;
+                margin-inline-start: auto;
+            }
+        }
+
+        &-response-output{
+            color: $color-brand;
+            margin: 25px 0 0 0 !important;
+            border: none !important;
+            padding: 0 !important;
+            text-align: center;
+        }
+    }
+
+    &_full-height {
+        padding:0;
+        .contact-us {
+            &__title {
+                padding: 120px 0;
+                font-size: 100px;
+                @include media-breakpoint-up(lg) {
+                    padding: 66px 0;
+                    font-size: 160px;
+                }
+                &:before {
+                    height: 100%;
+                    color: $color-brand;
+                    clip-path: polygon(0 0, 41% 0, 41% 100%, 0 100%);
+                    @include media-breakpoint-up(lg) {
+                        clip-path: polygon(0 0, 55.5% 0, 55.5% 100%, 0 100%);
+                    }
+                }
+    
+                &:after {
+                    color: $white;
+                    clip-path: polygon(41% 0, 100% 0, 100% 100%, 41% 100%);
+                    @include media-breakpoint-up(lg) {
+                        clip-path: polygon(55.5% 0, 100% 0, 100% 100%, 55.5% 100%);
+                    }
+                }
+            }
+
+            &__form {
+                flex-grow: 1;
+            }
+            &__line {
+                background-image: url('../../images/contact-us-left-bg2.svg');
+            }
+
+            &__aside {
+                &:after {
+                    height: 100%;
+                }
+            }
+        }
+        .wpcf7-form-label{
+            @include media-breakpoint-up(lg){
+                margin-bottom: 2px;
+            }
+        }
+    }
+}

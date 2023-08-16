@@ -1,0 +1,323 @@
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+@import "../parts/variables";
+@import "../parts/mixin";
+
+.woocommerce-checkout{
+    #billing_country_field,
+    .wc_payment_methods{
+        display: none;
+    }
+    #main-wrapper{
+        margin-top: 90px;
+        @include media-breakpoint-up(lg){
+            margin-top: 120px;
+        }
+    }
+    .checkout-form{
+        &__wrapper{
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            max-width: 1196px;
+            margin-left: auto;
+            margin-right: auto;
+            @include media-breakpoint-up(lg){
+                flex-direction: row-reverse;
+            }
+        }
+        &__order-table{
+            width: 100%;
+            border-radius: 10px;
+            background: $white;
+            box-shadow: 0px 4px 28px 0px rgba(0, 0, 0, 0.10);
+            padding: 38px 35px;
+            margin-bottom: 42px;
+            @include media-breakpoint-up(lg){
+                max-width: 574px;
+                width: 48%;
+                margin-inline-start: 20px;
+                padding: 38px 48px;
+                margin-bottom: 0;
+                height: 100%;
+            }
+            &-title{
+                margin-bottom: 36px;
+                font-size: 25px;
+                font-family: $font-primary;
+                line-height: 1.05;
+                font-weight: 600;
+                text-align: center;
+                @include media-breakpoint-up(lg){
+                    text-align: inherit;
+                }
+            }
+        }
+        &__fields-wrapper{
+            width: 100%;
+            @include media-breakpoint-up(lg){
+                max-width: 540px;
+                width: 45.2%;
+            }
+        }
+        &__title{
+            font-family: $font-primary;
+            font-size: 22px;
+            line-height: 1;
+            font-weight: 600;
+            margin-bottom: 28px;
+            @include media-breakpoint-up(lg){
+                font-size: 25px;
+            }
+        }
+        .form-row{
+            margin: 0 0 28px 0;
+            padding: 0;
+            label{
+                display: block;
+                margin-bottom: 3px;
+                line-height: 1.3;
+            }
+            .woocommerce-input-wrapper{
+                display: block;
+                width: 100%;
+            }
+            .input-text{
+                display: block;
+                width: 100%;
+                height: 50px;
+                border: 1px solid #A7A7A7;
+                padding: 0 16px;
+            }
+            &.woocommerce-form-checkbox{
+                margin-bottom: 18px;
+                @include media-breakpoint-up(lg){
+                    margin-bottom: 15px;
+                }
+            }
+        }
+    }
+    .checkout-order-table{
+        &__products{
+            padding-bottom: 36px;
+            border-bottom: 1px solid #A4A4A4;
+            margin-bottom: 36px;
+            @include media-breakpoint-up(lg){
+                margin-bottom: 24px;
+            }
+        }
+        &__item{
+            display: flex;
+            gap: 16px;
+            justify-content: space-between;
+            padding: 0 8px;
+            @include media-breakpoint-up(lg){
+                padding: 0;
+            }
+        }
+        &__product-info{
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        &__product-name{
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+        &__product-thumbnail{
+            img{
+                max-width: 68px;
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
+        &__product-total{
+            *{
+                font-size: 22px;
+                line-height: 1.2;
+                @include media-breakpoint-up(lg){
+                    font-size: 25px;
+                }
+            }
+        }
+        &__bottom{
+            padding-bottom: 36px;
+            border-bottom: 1px solid #A4A4A4;
+            margin-bottom: 32px;
+            &-item{
+                display: flex;
+                justify-content: space-between;
+                gap: 16px;
+                &:not(:last-child){
+                    margin-bottom: 16px;
+                }
+            }
+            &-label{
+                line-height: 1.3;
+                font-size: 15px;
+                font-weight: 600;
+            }
+            &-value{
+                line-height: 1.3;
+            }
+        }
+        &__footer{
+            &-item{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 16px;
+            }
+            &-label{
+                font-size: 15px;
+                line-height: 1.1;
+                font-weight: 600;
+                margin-bottom: 4px;
+                @include media-breakpoint-up(lg){
+
+                }
+            }
+            &-tax{
+                font-size: 15px;
+                line-height: 1.3;
+                @include media-breakpoint-up(lg){
+                    font-size: 16px;
+                    line-height: 22px;
+                }
+                *{ 
+                    font-size: 15px;
+                    line-height: 1.3;
+                    @include media-breakpoint-up(lg){
+                        font-size: 16px;
+                        line-height: 22px;
+                    }
+                }
+            }
+            &-value{
+                *{
+                    font-size: 32px;
+                    line-height: 1;
+                    @include media-breakpoint-up(lg){
+                        font-size: 35px;
+                    }
+                }
+            }
+        }
+    }
+    .woocommerce-privacy-policy-text{
+        p{
+            margin-bottom: 22px;
+            line-height: 1.3;
+            a{
+                color: $color-brand-dark;
+                transition: color .3s linear;
+                &:hover{
+                    color: $color-brand;
+                    text-decoration: underline;
+                }
+            }
+            @include media-breakpoint-up(lg){
+                margin-bottom: 15px;
+            }
+        }
+    }
+    #payment{
+        background-color: transparent;
+        border-radius: 0;
+        .form-row.place-order{
+            margin: 0;
+            padding: 0;
+        }
+        #place_order{
+            width: auto;
+            float: none;
+            margin: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            user-select: none;
+            border: 1px solid transparent;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+            padding: 5px 16px;
+            font-size: 16px;
+            line-height: 1.2598;
+            color: $white;
+            background-color: $color-brand;
+            &:hover {
+                background-color: $white;
+                border-color: $color-brand;
+                color: $color-brand;
+            }
+        }
+    }
+}
+
+// checkout thank you page
+.woocommerce-order-received{
+    .woocommerce,
+    .woocommerce-order{
+        height: 100%;
+    }
+    .woocommerce-order{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .woocommerce-thank-you{
+        max-width: 466px;
+        border-radius: 10px;
+        background: $white;
+        box-shadow: 0px 4px 28px 0px rgba(0, 0, 0, 0.10);
+        padding: 48px 20px;
+        width: 100%;
+        margin: 100px 0;
+        @include media-breakpoint-up(lg){
+            margin: 70px 0;
+            padding: 64px 40px 110px;
+        }
+        &__wrapper{
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        &__icon{
+            background-image: url("data:image/svg+xml,%3Csvg width='88' height='88' viewBox='0 0 88 88' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M44.0026 80.6666C23.7626 80.6446 7.35794 64.24 7.33594 44V43.2666C7.73927 23.1183 24.3309 7.06929 44.4793 7.33329C64.6349 7.60462 80.7939 24.0863 80.6619 44.2383C80.5299 64.394 64.1583 80.6666 44.0026 80.6666Z' fill='%23FF1521'/%3E%3Cmask id='mask0_3073_17077' style='mask-type:alpha' maskUnits='userSpaceOnUse' x='7' y='7' width='74' height='74'%3E%3Cpath d='M43.9948 80.6666C23.7548 80.6446 7.35012 64.24 7.32812 44V43.2666C7.73146 23.1183 24.3231 7.06929 44.4715 7.33329C64.6271 7.60462 80.7861 24.0863 80.6541 44.2383C80.5221 64.394 64.1505 80.6666 43.9948 80.6666Z' fill='%23FFB5B9'/%3E%3C/mask%3E%3Cg mask='url(%23mask0_3073_17077)'%3E%3Cmask id='mask1_3073_17077' style='mask-type:alpha' maskUnits='userSpaceOnUse' x='0' y='0' width='136' height='146'%3E%3Crect width='136' height='146' fill='%23FF9495'/%3E%3C/mask%3E%3Cg mask='url(%23mask1_3073_17077)'%3E%3Cpath d='M120.979 148.669L120.85 148.885L105.76 148.885C105.712 148.804 105.664 148.73 105.623 148.649L98.3684 136.252C98.3205 136.164 98.2658 136.083 98.2179 135.995C98.2931 135.874 98.3615 135.745 98.4367 135.624L105.479 123.593C105.575 123.43 105.671 123.268 105.766 123.106L120.856 123.106L120.986 123.322L120.986 122.667L120.856 122.883L105.766 122.883C105.671 122.721 105.575 122.558 105.486 122.396L98.4231 110.331C98.3547 110.216 98.2932 110.108 98.2248 109.993C100.741 105.694 103.257 101.402 105.773 97.1036L120.863 97.1036L120.993 97.3199L120.993 70.662L120.863 70.8783L105.773 70.8783C105.712 70.7702 105.65 70.6621 105.589 70.5607L98.3342 58.1712C98.3 58.1104 98.2658 58.0496 98.2316 57.9887C100.748 53.69 103.264 49.3979 105.78 45.0991L120.87 45.0991L121 45.3154L121 44.6598L120.87 44.8761L105.78 44.8761C105.712 44.7544 105.636 44.6328 105.568 44.5111L98.3137 32.1149C98.2863 32.0676 98.259 32.0271 98.2316 31.9797C100.748 27.681 103.264 23.3889 105.78 19.0901L120.87 19.0901L121 19.3064L121 -6.99998L105.589 -6.99998C103.072 -2.70119 100.556 1.59083 98.0402 5.88962L82.9502 5.88962C82.9502 5.88962 82.9365 5.86934 82.9296 5.85582L75.388 -6.99998L59.9083 -6.99999C57.3921 -2.7012 54.876 1.59083 52.3598 5.88961L37.2698 5.88961C37.2698 5.88961 37.2561 5.86933 37.2493 5.86257L29.8923 -6.72287C29.8376 -6.8175 29.7829 -6.90536 29.7282 -6.99999L14.2484 -6.99999C11.7323 -2.70121 9.21615 1.59082 6.70001 5.8896L-8.39003 5.8896L-15.9316 -7L-16 -7L-16 18.6711L-16 19.3267L-14.2291 22.348C-12.9916 24.4636 -11.7472 26.586 -10.5096 28.7016L-8.58148 32L-11.3916 36.799C-12.0002 37.8399 -12.6087 38.8808 -13.2172 39.9217L-16 44.6733L-16 45.3289L-13.2172 50.0806C-12.6087 51.1215 -12.0002 52.1624 -11.3916 53.2033L-8.58148 58.0022L-11.3916 62.8012C-11.9933 63.8353 -12.6018 64.8627 -13.2035 65.8969L-16 70.6755L-16 71.3312L-16 96.6778L-16 97.3334L-14.2428 100.341C-12.9984 102.464 -11.754 104.593 -10.5096 106.715L-8.58149 110.007L-16 122.673L-16 123.329L-14.236 126.35C-12.9984 128.466 -11.7609 130.581 -10.5233 132.697L-8.58834 136.002L-16 148.669L-16 149L-15.9385 149L-8.39005 136.11L6.69998 136.11C9.21613 140.409 11.7254 144.708 14.2484 149L29.7213 149C29.8171 148.838 29.9128 148.669 30.0085 148.507L37.2629 136.11L52.353 136.11C54.8691 140.409 57.3784 144.708 59.9014 149L75.3812 149L82.9296 136.11L98.0197 136.11C100.536 140.409 103.045 144.708 105.568 149L120.979 149L120.979 148.669ZM59.9083 71C57.3921 75.2988 54.876 79.5908 52.3598 83.8896L37.2698 83.8896C37.2698 83.8896 37.2561 83.8693 37.2493 83.8558L29.7966 71.1217C29.7761 71.0811 29.7487 71.0405 29.7282 71C31.6358 67.7421 33.5434 64.4775 35.4511 61.2196L37.2698 58.1104L52.3598 58.1104C54.876 62.4092 57.3853 66.708 59.9083 71ZM35.4511 87.2218L37.2698 84.1126L52.3598 84.1127C54.876 88.4114 57.3853 92.7102 59.9083 97.0023C57.3921 101.301 54.876 105.593 52.3598 109.892L37.2698 109.892C37.2698 109.892 37.2561 109.872 37.2493 109.858L29.8171 97.1645C29.7829 97.1104 29.7555 97.0563 29.7214 97.0023C31.629 93.7444 33.5366 90.4797 35.4442 87.2218L35.4511 87.2218ZM59.4296 98.2527L60.0997 97.1104L75.1897 97.1104C77.7059 101.409 80.2152 105.708 82.7382 110C80.222 114.299 77.7059 118.591 75.1897 122.89L60.0997 122.89C60.0997 122.89 60.086 122.869 60.0792 122.856L52.6265 110.128C52.5991 110.088 52.5786 110.041 52.5513 110C54.8418 106.086 57.1391 102.166 59.4296 98.2527ZM98.0197 109.892L82.9296 109.892C82.9296 109.892 82.9159 109.865 82.9091 109.858L75.4838 97.1712C75.4496 97.1172 75.4154 97.0563 75.388 97.0023C77.323 93.6971 79.258 90.3851 81.1998 87.0799L82.9365 84.1127L98.0265 84.1127C100.543 88.4114 103.052 92.7102 105.575 97.0023C103.059 101.301 100.543 105.593 98.0265 109.892L98.0197 109.892ZM98.0197 58.1104C100.536 62.4092 103.045 66.708 105.568 71C103.052 75.2988 100.536 79.5908 98.0197 83.8896L82.9296 83.8896C82.9296 83.8896 82.916 83.8693 82.9091 83.8558L75.4564 71.1284C75.4291 71.0879 75.4085 71.0406 75.3812 71C77.3162 67.6948 79.2511 64.3828 81.193 61.0776L82.9296 58.1104L98.0197 58.1104ZM75.1898 70.8919L60.0997 70.8919C60.0997 70.8919 60.086 70.8716 60.0792 70.8581C60.0792 70.8581 52.5855 58.0631 52.5513 58.0023C54.2606 55.0891 60.0997 45.1127 60.0997 45.1127L75.1898 45.1127C77.6991 49.4114 80.2152 53.7102 82.7382 58.0023C80.222 62.301 77.7059 66.5931 75.1898 70.8919ZM36.4562 7.50503L37.2698 6.11266L52.3598 6.11266C54.8691 10.4114 57.3853 14.7102 59.9083 19.0023C57.3921 23.301 54.876 27.5931 52.3598 31.8919L37.2698 31.8919C37.2698 31.8919 37.2561 31.8716 37.2493 31.8581L29.7966 19.1239C29.7761 19.0834 29.7487 19.0428 29.7282 19.0023C31.9709 15.1699 34.2135 11.3374 36.4562 7.50503ZM60.0997 19.1104L75.1898 19.1104C77.7059 23.4092 80.2152 27.708 82.7382 32C80.222 36.2988 77.7059 40.5908 75.1898 44.8896L60.0997 44.8896C60.0997 44.8896 60.0724 44.8355 60.0519 44.8085L52.6265 32.1284C52.5991 32.0879 52.5718 32.0406 52.5513 32C55.0674 27.7012 57.5836 23.4092 60.0997 19.1104ZM98.0197 31.8919L82.9296 31.8919C82.9296 31.8919 82.916 31.8716 82.9091 31.8581L75.4564 19.1307C75.4291 19.0901 75.4086 19.0428 75.3812 19.0023C77.6512 15.1225 79.9212 11.2428 82.1912 7.3631L82.9228 6.11267L98.0128 6.11267C100.522 10.4115 103.038 14.7102 105.561 19.0023C103.045 23.3011 100.529 27.5931 98.0128 31.8919L98.0197 31.8919ZM-8.39003 31.8919L-15.9316 19.0022L-8.39003 6.11265L6.70001 6.11265C9.16829 10.3303 11.6366 14.5548 14.1117 18.7724L14.2484 19.0023L14.1117 19.2321C11.6366 23.4497 9.16829 27.6674 6.7 31.8919L-8.39003 31.8919ZM14.4399 19.1104L29.5299 19.1104C32.0119 23.3484 34.487 27.5863 36.969 31.8243L37.0715 32L36.798 32.4664C34.3708 36.6097 31.9503 40.753 29.5231 44.8964L14.433 44.8964C14.433 44.8964 14.3989 44.8423 14.3852 44.8152L6.95982 32.1284C6.93931 32.0879 6.91196 32.0473 6.89145 32.0068C9.40759 27.708 11.9237 23.4159 14.4399 19.1172L14.4399 19.1104ZM11.9716 49.3303L14.4399 45.1126L29.5299 45.1126C32.0187 49.3709 34.5075 53.6224 37.0031 57.8806L37.0715 58.0023L36.9689 58.178C34.487 62.4159 32.005 66.6539 29.5299 70.8918L14.4399 70.8918C14.4399 70.8918 14.4262 70.8648 14.4194 70.858L6.994 58.1712C6.95982 58.1171 6.93247 58.0631 6.89828 58.009C8.58711 55.1161 10.2828 52.23 11.9716 49.3371L11.9716 49.3303ZM-15.9316 71L-8.3832 58.1104L6.70683 58.1104C9.19563 62.3619 11.6844 66.6133 14.1732 70.8648L14.2484 71L14.1117 71.2298C11.6366 75.4475 9.16828 79.6719 6.69999 83.8896L-8.39004 83.8896L-15.9316 71ZM-8.38321 109.892L-15.9316 97.0022L-8.38321 84.1126L6.70683 84.1126C9.17511 88.3303 11.6434 92.5548 14.1185 96.7724L14.2553 97.0022L14.139 97.1983C11.6571 101.429 9.18195 105.661 6.70682 109.892L-8.39005 109.892L-8.38321 109.892ZM7.11707 109.635L14.4467 97.1104L29.5367 97.1104C32.0324 101.375 34.528 105.64 37.0305 109.905L37.0852 110L36.9553 110.223C34.4801 114.447 32.0119 118.665 29.5367 122.89L14.4467 122.89L7.06921 110.291C7.01451 110.196 6.95297 110.095 6.89827 110C6.96665 109.878 7.04186 109.757 7.11023 109.635L7.11707 109.635ZM36.3467 137.266C34.0767 141.139 31.8136 145.019 29.5436 148.892L14.4535 148.892L7.04869 136.239C7.00083 136.158 6.95297 136.077 6.91194 136.002C6.97348 135.894 7.04185 135.786 7.10339 135.678L14.4604 123.113L29.5504 123.113C32.0255 127.344 34.5007 131.575 36.9758 135.799L37.092 136.002L36.3536 137.266L36.3467 137.266ZM75.2034 148.892L60.1134 148.892L52.647 136.137C52.6196 136.09 52.5923 136.043 52.5649 136.002C54.5546 132.596 56.5511 129.196 58.5408 125.789L60.1065 123.113L75.1966 123.113C77.7127 127.411 80.222 131.71 82.745 136.002C80.2289 140.301 77.7127 144.593 75.1966 148.892L75.2034 148.892Z' fill='%23D60813'/%3E%3C/g%3E%3C/g%3E%3Cpath d='M22 48.4997L27.17 42.4963L36.6667 51.9563L60.83 27.793L66 32.9996L36.6667 62.333L22 48.4997Z' fill='%23FFE6E6'/%3E%3C/svg%3E");
+            width: 88px;
+            height: 88px;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-bottom: 10px;
+        }
+        &__title{
+            font-size: 32px;
+            line-height: 1;
+            margin-bottom: 10px;
+            font-family: $font-primary;
+            @include media-breakpoint-up(lg){
+                font-size: 30px;
+            }
+        }
+        &__text{
+            margin-bottom: 0;
+        }
+        &__actions{
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 10px;
+        }
+    }
+}

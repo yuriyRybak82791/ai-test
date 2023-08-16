@@ -1,0 +1,474 @@
+.popup-opened {
+    overflow: hidden;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.40);
+    z-index: 9992;
+
+    .my_overlay {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.40);
+    }
+
+    &-wrapper-inner {
+        border-radius: 10px;
+        background: rgba($white, .8);
+        box-shadow: 0 4px 20px 0 rgba($black, .1);
+        width: 1360px;
+        height: 635px;
+        max-height: calc(100% - 80px);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: calc(100% - $spacer * 2);
+
+        &:before, &:after {
+            content: "";
+            position: absolute;
+            width: calc(100% - 10px);
+            right: 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 84.20%);
+            height: 70px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        &:before {
+            top: 0;
+            transform: scaleY(-1);
+            border-bottom-right-radius: 10px;
+        }
+
+        &:after {
+            bottom: 0;
+            border-bottom-right-radius: 10px;
+        }
+
+        @include media-breakpoint-up(md) {
+            max-width: calc(100vw - 80px);
+        }
+    }
+
+    .in {
+        max-width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        @include custom-scrollbar;
+        max-height: 100%;
+        padding: calc($spacer * 4) 0;
+    }
+
+    .popup-close {
+        font-size: 0;
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjMiIHZpZXdCb3g9IjAgMCAyNCAyMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEuOTA2MjUgMUwyMi40MDMgMjEuNDk2OCIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0xIDIxLjQ5NjdMMjEuNDk2OCAwLjk5OTk5MyIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjwvc3ZnPgo=");
+        width: 12px;
+        height: 12px;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: absolute;
+        cursor: pointer;
+        border: 0;
+        background-color: unset;
+        right: 0;
+        top: -26px;
+        filter: invert(1);
+        background-size: cover;
+        z-index: 1;
+        @include media-breakpoint-up(lg) {
+            width: 24px;
+            height: 24px;
+            top: 13px;
+            right: 13px;
+            filter: none;
+        }
+    }
+
+    &#loyalty-program-video-1,
+    &#loyalty-program-video-2,
+    &#loyalty-program-video-3 {
+        .popup-wrapper-inner {
+            border-radius: 0;
+            max-width: calc(100vw - 32px);
+            aspect-ratio: 640 / 360;
+            height: auto;
+            width: 1128px;
+            &::before,
+            &::after {
+                display: none;
+            }
+
+            // @include media-breakpoint-up(sm) {
+            //     height: 30vh;
+            //     max-width: calc(100vw - 80px);
+            // }
+            // @include media-breakpoint-up(md) {
+            //     height: 35.3vh;
+                
+            // }
+            // @include media-breakpoint-up(lg) {
+            //     height: 55vh;
+            //     max-width: calc(74vw - 80px);
+            // }
+            // @include media-breakpoint-up(xl) {
+            //     height: 635px;
+            // }
+        }
+
+        .in {
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+
+            iframe {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .popup-iframe-wrapper {
+            height: 100%;
+
+        }
+
+        .popup-close {
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjMiIHZpZXdCb3g9IjAgMCAyNCAyMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEuOTA2MjUgMUwyMi40MDMgMjEuNDk2OCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxwYXRoIGQ9Ik0xIDIxLjQ5NjdMMjEuNDk2OCAwLjk5OTk5MyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjwvc3ZnPgo=");
+            filter: none;
+            @include media-breakpoint-up(lg) {
+                top: -30px;
+                right: 0;
+            }
+        }
+    }
+    &#get-team-member-popup{
+        overflow-x: hidden;
+        overflow-y: auto;
+        background: rgba(0, 0, 0, 0.40);
+        .my_overlay{
+            opacity: 0;
+            position: fixed;
+        }
+        .in{
+            padding: 0;
+            max-height: none;
+            max-width: calc(100vw - 32px); 
+            margin-left: auto;
+            margin-right: auto;
+            width: 390px;
+            position: relative;
+            z-index: 10;
+            @include media-breakpoint-up(lg) {
+                width: 1324px;
+                max-width: calc(100vw - 116px); 
+            }
+        }
+        .popup-wrapper-inner{
+            background-color: transparent;
+            box-shadow: none;
+            border: 0;
+            height: auto;
+            max-height: none;
+            max-width: 100%;
+            width: 100%;
+            position: relative;
+            left: unset;
+            top: unset;
+            transform: none;
+            margin-top: 100px;
+            margin-bottom: 84px;
+            @include media-breakpoint-up(lg) {
+                margin-top: 50px;
+                margin-bottom: 50px;
+            }
+            &:before, &:after{
+                display: none;
+            }
+            
+            & > .popup-close{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: block;
+                opacity: 0;
+            }
+        }
+        .team-popup{
+            display: flex;
+            text-align: initial;
+            flex-direction: column;
+            @include media-breakpoint-up(lg){
+                flex-direction: row;
+            }
+            &__gallery{
+                width: 100%;
+                max-width: none;
+                padding-bottom: 20px;
+                background-color: $white;
+                @include media-breakpoint-up(lg){
+                    width: 25.9%;
+                    max-width: 342px;
+                    padding-top: 64px;
+                    padding-left: 6.64%;
+                    position: relative;
+                    isolation: isolate;
+                    padding-bottom: 0;
+                    background-color: transparent;
+                }
+                &.management{
+                    padding-bottom: 0;
+                }
+                &::before{
+                    content: '';
+                    display: block;
+                    width: 100%;
+                   
+                    background-image: url('./../images/team-popup-side.svg');
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    width: 25.73%;
+                    left: 0;
+                    bottom: 66px;
+                    position: absolute;
+                    z-index: -1;
+                    @include media-breakpoint-up(lg){
+                        height: 72.66%;
+                    }
+                }
+                &-img{
+                    display: block;
+                    width: 100%;
+                    object-fit: cover;
+                    height: 88px;
+                    @include media-breakpoint-up(lg){
+                        height: 100%;
+                        max-height: 832px;
+                    }
+                    &.management{
+                        height: 91px;
+                        @include media-breakpoint-up(lg){
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+            &__main{
+                display: flex;
+                flex-direction: column-reverse;
+                align-items: center;
+                @include media-breakpoint-up(lg){
+                    width: 64.4%;
+                    max-width: 851px;
+                    flex-direction: row;
+                    align-items: initial;
+                }
+                &-info{
+                    background-color: $white;
+                    width: 100%;
+                    @include media-breakpoint-up(lg){
+                        padding-top: 64px;
+                        width: 37.13%;
+                        max-width: 316px;
+                        background-color: transparent;
+                    }
+                }
+                &-info-wrapper{
+                    background-color: $white;
+                    position: relative;
+                    padding: 25px 38px 30px 26px;
+                    @include media-breakpoint-up(lg){
+                        padding: 60px 25px 50px 10px;
+                        height: 100%;
+                    }
+                    @include media-breakpoint-up(xl){
+                        padding-top: 86px;
+                        padding-right: 45px;
+                        padding-bottom: 50px;
+                        padding-left: 14px;
+                    }
+                    .popup-close{
+                        background-image: url("data:image/svg+xml,%3Csvg width='24' height='23' viewBox='0 0 24 23' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.90625 1L22.403 21.4968' stroke='black' stroke-width='2'/%3E%3Cpath d='M1 21.4968L21.4968 1.00007' stroke='black' stroke-width='2'/%3E%3C/svg%3E");
+                        right: 11px;
+                        top: 12px;
+                        width: 14px;
+                        height: 13px;
+                        background-size: contain;
+                        filter: none;
+                        @include media-breakpoint-up(lg){
+                            width: 20px;
+                            height: 19px;
+                            right: 16px;
+                            top: 19px;
+                        }
+                        @include media-breakpoint-up(lg){
+                            width: 24px;
+                            height: 23px;
+                        }
+                    }
+                }
+                &-img-wrapper{
+                    position: relative;
+                    display: flex;
+                    max-width: 285px;
+                    width: 100%;
+                    &::before{
+                        content: '';
+                        display: block;
+                        width: 100%;
+                        height: calc(100% - 64px);
+                        background-color: $white;
+                        left: 0;
+                        bottom: 0;
+                        z-index: -1;
+                        position: absolute;
+                    }
+                    @include media-breakpoint-up(lg){
+                        width: 62.87%;
+                        max-width: 535px;
+                        align-items: flex-end;
+                        justify-content: flex-end;
+                    }
+                }
+                &-player{
+                    display: block;
+                    max-width: 100%;
+                    width: auto;
+                    height: auto;
+                    max-height: 894px;
+                    object-fit: contain;
+                    z-index: 10;
+                    position: relative;
+                    margin: 0 auto;
+                    left: -1px;
+                }
+                &-bg{
+                    background-image: url('./../images/team-popup-player-mobile-bg.svg');
+                    background-position:top left;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    @include media-breakpoint-up(lg){
+                        background-image: url('./../images/team-popup-player-bg.svg');
+                        width: 73.3%;
+                    }
+                }
+                &-number{
+                    color: $white;
+                    font-family: $font-secondary;
+                    font-weight: 900;
+                    position: absolute;
+                    font-size: 66px;
+                    line-height: 81.5%; 
+                    right: 22px;
+                    top: 18px;
+                    @include media-breakpoint-up(xl){
+                        font-size: 165px;
+                        line-height: 81.5%; 
+                        right: 32px;
+                        top: 42px;
+                    }
+                }
+            }
+            &__name{
+                font-family: $font-secondary;
+                font-weight: 900;
+                color: $color-brand;
+                line-height: 1;
+                font-size: 36px;
+                @include media-breakpoint-up(lg){
+                    font-size: 75px;
+                }
+                @include media-breakpoint-up(xl){
+                    font-size: 100px;
+                    margin-bottom: 5px;
+                }
+            }
+            &__position{
+                line-height: 1;
+                color: $color-burgundy;
+                font-weight: 600;
+                margin-bottom: 15px;
+                @include media-breakpoint-up(lg){
+                    font-size: 22px;
+                }
+                @include media-breakpoint-up(xl){
+                    font-size: 50px;
+                    margin-bottom: 25px;
+                }
+            }
+            &__age{
+                line-height: 1;
+                font-size: 15px;
+                @include media-breakpoint-up(lg){
+                    font-size: 16px;
+                }
+                @include media-breakpoint-up(xl){
+                    font-size: 26px;
+                    margin-bottom: 5px;
+                }
+            }
+            &__experience{
+                line-height: 1;
+                font-size: 15px;
+                @include media-breakpoint-up(lg){
+                    font-size: 16px;
+                }
+                @include media-breakpoint-up(xl){
+                    font-size: 26px;
+                }
+            }
+            &__content{
+                margin-top: 10px;
+                *{
+                    font-size: 16px;
+                    line-height: 1.17;
+                }
+                p:last-child{
+                    margin-bottom: 0;
+                    &:not(:last-child){
+                        margin: 0 0 1em
+                    }
+                }
+                @include media-breakpoint-up(xl){
+                    font-size: 18px;
+                }
+            }
+            &__net-wrapper{
+                display: none;
+                position: relative;
+                @include media-breakpoint-up(lg){
+                    display: block;
+                    width: 9.82%;
+                    max-width: 130px;
+                }
+            }
+            &__net{
+                position: absolute;
+                right: 0;
+                bottom: 66px;
+                width: 100%;
+                background-image: url('./../images/team-popup-net.svg');
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                @include media-breakpoint-up(lg){
+                    height: 72.66%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,191 @@
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+@import "../parts/variables";
+@import "../parts/mixin";
+
+.matches-list {
+    &__match-item {
+        border-radius: 5px;
+        border: 1px solid #E9E9E9;
+        background: $white;
+        box-shadow:0 12px 40px rgba($black, .1);
+        font-size: 15px;
+        @include media-breakpoint-down(sm) {
+            padding-left: 4px;
+            padding-right: 4px;
+        }
+        @include media-breakpoint-up(lg) {
+            font-size: 16px;
+        }
+
+        &__place {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            width: 23%;
+            padding-left: 12px;
+            padding-right: 12px;
+            @include media-breakpoint-up(sm) {
+                padding-left: 16px;
+                padding-right: 16px;
+                width: auto;
+            }
+            &:before, &:after {
+                content: "";
+                position: absolute;
+                width: 1px;
+                height: 150%;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: #E9E9E9;
+            }
+
+            &:before {
+                left: 0;
+            }
+
+            &:after {
+                right: 0;
+            }
+
+            @include media-breakpoint-up(md) {
+                &:before, &:after {
+                    display: none;
+                }
+                flex-direction: row;
+            }
+
+            span {
+                display: inline-block;
+
+                @include media-breakpoint-up(md) {
+                    &:not(:last-child) {
+                        &:after {
+                            content: "|";
+                            display: inline-block;
+                            margin-inline: .3em;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        &__teams {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: $spacer;
+            width: 53%;
+            padding-left: 12px;
+            padding-right: 12px;
+            @include media-breakpoint-up(sm) {
+                padding-left: 16px;
+                padding-right: 16px;
+                width: auto;
+            }
+            @include media-breakpoint-up(md) {
+                flex-direction: row;
+                gap: unset;
+            }
+        }
+
+        &__team {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            @include media-breakpoint-up(sm) {
+                gap: calc($spacer * 2);
+            }
+
+            @include media-breakpoint-up(lg) {
+                gap: calc($spacer * 3);
+            }
+
+            @include media-breakpoint-up(xl) {
+                gap: calc($spacer * 4);
+            }
+
+            &-1 {
+                @include media-breakpoint-up(md) {
+                    flex-direction: row-reverse;
+                }
+            }
+        }
+
+        &__score {
+            font-weight: 600;
+            white-space: nowrap;
+
+            &-mobile {
+                font-weight: 600;
+                margin-inline-start: auto;
+            }
+        }
+
+        &__ligue {
+            width: 24%;
+            padding-left: 12px;
+            padding-right: 12px;
+            @include media-breakpoint-up(sm) {
+                padding-left: 16px;
+                padding-right: 16px;
+                width: auto;
+            }
+            &-logo {
+                display: block;
+                max-width: 60px;
+                height: auto;
+                width: 100%;
+                object-fit: contain;
+                margin-inline-start: auto;
+                @include media-breakpoint-up(md) {
+                    width: 80px;
+                    height: 80px;
+                }
+            }
+        }
+
+        &__logo {
+            display: block;
+            object-fit: contain;
+            width: 34px;
+            height: 40px;
+            @include media-breakpoint-up(md) {
+                width: 45px;
+                height: 55px;
+            }
+        }
+    }
+
+    &__button-wrapper{
+        display: flex;
+        gap: 22px;
+        justify-content: center;
+        align-items: center;
+        max-width: 260px;
+        margin-left: auto;
+        margin-right: auto;
+        flex-wrap: wrap;
+        @include media-breakpoint-up(md){
+            max-width: none;
+        }
+    }
+    &__button{
+        &.btn-arrow{
+            @include media-breakpoint-up(md){
+                &::after{
+                    display: none;
+                }
+            }
+        }
+        
+    }
+    &__button,
+    &__link{
+        
+    }
+}

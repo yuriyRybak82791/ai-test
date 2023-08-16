@@ -1,0 +1,113 @@
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+@import "../parts/variables";
+@import "../parts/mixin";
+
+.section-404 {
+    height: 100%;
+    position: relative;
+
+    &__container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 154px 0;
+        @include media-breakpoint-up(md){
+            padding: 162px 0;
+        }
+    }
+
+    &__bg {
+        height: 100%;
+        display: flex;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+    }
+
+    &__layer {
+
+        &-4, &-3 {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        &-4 {
+            background-image: url("../../images/404_bg_layer-1.jpg");
+            width: 50%;
+            @include media-breakpoint-up(md) {
+                width: 25%;
+            }
+        }
+
+        &-3 {
+            background-image: url("../../images/404_bg_layer-2.svg");
+            background-color: #FF009C;
+            width: 15%;
+            @include media-breakpoint-up(md) {
+                width: 25%;
+            }
+        }
+
+        &-2 {
+            background-color: $color-brand-dark;
+            width: 35%;
+            @include media-breakpoint-up(md) {
+                width: 25%;
+            }
+        }
+
+        &-1 {
+            background-color: #FFB5B9;
+            width: 25%;
+        }
+    }
+
+    &__body {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        color: $white;
+        height: 100%;
+    }
+
+    &__404 {
+        @include responsive-font-size(208px, 512px);
+        line-height: .75;
+        font-family: $font-secondary;
+        position: relative;
+        color: transparent;
+        &:after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            content: attr(data-text);
+            color: $color-brand;
+            clip-path: polygon(50% -50%, 100% -50%, 100% 100%, 50% 100%);
+        }
+        &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            content: attr(data-text);
+            color: $white;
+            clip-path: polygon(-100% 50%,100% -50%,50% -100%,50% 100%);
+        }
+    }
+
+    &__text {
+        @include responsive-font-size(32px, 50px);
+        font-weight: 600;
+        font-family: $font-primary;
+        text-transform: uppercase;
+        line-height: 1;
+    }
+}

@@ -1,0 +1,79 @@
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+@import "../parts/variables";
+@import "../parts/mixin";
+
+.partners-logo-slider {
+    &__container {
+        position: relative;
+        padding-top: 16%;
+        @include media-breakpoint-up(sm){
+            padding-top: 60px;
+        }
+        @include media-breakpoint-up(lg) {
+            padding: 80px 0 100px;
+
+        }
+    }
+
+    &__wrapper {
+        transition-timing-function: linear !important;
+    }
+
+    &__title{
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 29vw;
+        line-height: 1;
+        color: $color-light-pink;
+        opacity: 0.5;
+        text-align: center;
+        width: 100%;
+        @include media-breakpoint-up(sm){
+            font-size: 126px;
+            max-width: 390px;
+        }
+        @include media-breakpoint-up(md){
+            font-size: 160px;
+            max-width: unset;
+            top: 40px;
+        }
+        @include media-breakpoint-up(lg){
+            font-size: 200px;
+        }
+        @include media-breakpoint-up(xl){
+            line-height: 1.2;
+            font-size: 250px;
+            top: 20px;
+        }
+        @media screen and (min-width: 1400px){
+            font-size: 300px;
+            top: 0;
+        }
+    }
+
+    &__slide {
+        &.swiper-slide {
+            width: 166px;
+            padding: 0 18px;
+            height: 110px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include media-breakpoint-up(xl) {
+                width: 228px;
+                padding: 0 14px;
+                height: 150px;
+            }
+        }
+
+        &-image {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+    }
+}

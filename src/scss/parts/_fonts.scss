@@ -1,0 +1,28 @@
+/* stylelint-disable */
+
+@font-face {
+    font-family: RagSans;
+    src: url('./../fonts/RagSans-1.4-Regular.woff2') format('woff2'),
+    url('./../fonts/RagSans-1.4-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: RagSans;
+    src: url('./../fonts/RagSans-1.4-SemiBold.woff2') format('woff2'),
+    url('./../fonts/RagSans-1.4-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: RAG-Marom-Poster;
+    src: url('./../fonts/RAG-Marom-Poster-1.2-Ultra.woff2') format('woff2'),
+    url('./../fonts/RAG-Marom-Poster-1.2-Ultra.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

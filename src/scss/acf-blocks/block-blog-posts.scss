@@ -1,0 +1,60 @@
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+@import "../parts/variables";
+@import "../parts/mixin";
+@import "../parts/post-card";
+
+.blog-posts{
+    margin-bottom: 98px;
+    margin-top: 36px;
+    @include media-breakpoint-up(lg){
+        margin-bottom: calc($spacer * 10);
+        margin-top: 18px;
+    }
+    .not-found{
+        text-align: center;
+    }
+    &__wrapper{
+        display: grid;
+        gap: 6px;
+        @include media-breakpoint-up(md){
+            gap: 8px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include media-breakpoint-up(lg){
+            gap: 8px;
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    .pagination-wrapper{
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 22px;
+        @include media-breakpoint-up(lg){
+            margin-top: 52px;
+        }
+        .page-numbers{
+            font-size: 15px;
+            line-height: 18px;
+            color: $color-brand-dark;
+            opacity: 0.3;
+            transition:opacity .3s linear;
+            @include media-breakpoint-up(sm){
+                font-size: 16px;
+            }
+            &:hover:not(.dots),
+            &.current{
+                opacity: 1;
+            }
+            &.prev,
+            &.next{
+                opacity: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: -2px;
+            }
+        }
+    }
+}

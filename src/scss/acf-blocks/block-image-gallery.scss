@@ -1,0 +1,47 @@
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+@import "../parts/variables";
+@import "../parts/mixin";
+
+.image-gallery{
+    margin-bottom: 36px;
+    margin-top: 26px;
+    @include media-breakpoint-up(lg){
+        margin-top: 44px;
+        margin-bottom: 56px;
+    }
+    &__slider{
+        &.swiper{
+            .swiper-pagination{
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 28px;
+                position: relative;
+                bottom: unset;
+                @include media-breakpoint-up(lg){
+                    margin-top: 35px;
+                }
+                &-bullet{
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background-color: transparent;
+                    border: 1px solid $black;
+                    transition:background-color .3s linear;
+                    margin: 0;
+                    opacity: 1;
+                    &:hover,
+                    &-active{
+                        background-color: $black;
+                    }
+                }
+            }
+        }
+    }
+    &__slide-image{
+        margin: 0 !important;
+        display: block;
+        width: 100%;
+    }
+}

@@ -1,0 +1,102 @@
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+@import "../parts/variables";
+@import "../parts/mixin";
+
+.sponsors-list{
+    margin-bottom: 78px;
+    margin-top: 20px;
+    @include media-breakpoint-up(lg){
+        margin-top: 95px;
+        margin-bottom: 95px;
+    }
+    &__wrapper{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        @include media-breakpoint-up(md){
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+    }
+    &__card{
+        background-color: $white;
+        border-radius: 6px;
+        box-shadow: 0px 2.1662468910217285px 15.163728713989258px 0px rgba(0, 0, 0, 0.10);
+        padding: 15px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        gap: 10px;
+        align-items: center;
+        text-align: center;
+        @include media-breakpoint-up(lg){
+            border-radius: 10px;
+            box-shadow: 0px 4px 28px 0px rgba(0, 0, 0, 0.10);
+            padding: 32px;
+            gap: 28px;
+        }
+        &-logo-wrapper{
+            max-width: 155px;
+            width: 100%;
+            height: 100px;
+            padding: 10px 15px;
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+            @include media-breakpoint-up(lg){
+                max-width: 248px;
+                height: 160px;
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+        }
+        &-logo{
+            display: block;
+            max-width: 100%;
+            height: auto;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        &-content,
+        &-link-wrapper{ 
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 7px;
+            padding-right: 7px;
+            max-width: 288px;
+        }
+        &-name{
+            font-family: $font-primary;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 16px;
+            line-height: 1;
+            @include media-breakpoint-up(md){
+                margin-bottom: 16px;
+                font-size: 35px;
+            }
+        }
+        &-text{
+            margin-bottom: 0;
+        }
+        &-link{
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 600;
+            color: $color-brand-dark;
+            transition: color .3s linear;
+            &:hover{
+                color: $color-brand;
+            }
+            @include media-breakpoint-up(md){
+                font-size: 18px;
+                line-height: 26px;
+            }
+        }
+    }
+}

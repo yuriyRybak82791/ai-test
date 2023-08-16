@@ -1,0 +1,86 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    padding: 5px 16px;
+    font-size: 16px;
+    line-height: 1.2598;
+    color: $white;
+    background-color: $color-brand;
+
+    @include media-breakpoint-up(md) {
+        font-size: 18px;
+        padding: 6px 20px;
+    }
+
+    &:hover {
+        background-color: $white;
+        border-color: $color-brand;
+        color: $color-brand;
+    }
+    &.btn-border{
+        background-color: transparent;
+        color: $color-brand;
+        border-color: $color-brand;
+        &:hover{
+            background-color: $color-brand;
+            color: $white;
+        }
+    }
+    &.btn-big {
+        @include media-breakpoint-up(lg) {
+            font-size: 22px;
+            padding: 12px 20px;
+        }
+    }
+
+    &.btn-arrow {
+        &:after {
+            content: "";
+            width: 26px;
+            height: 8px;
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDI2IDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0wLjY0NjQ0OCAzLjY0NjQ1QzAuNDUxMTg1IDMuODQxNzEgMC40NTExODUgNC4xNTgyOSAwLjY0NjQ0OCA0LjM1MzU1TDMuODI4NDMgNy41MzU1M0M0LjAyMzY5IDcuNzMwOCA0LjM0MDI3IDcuNzMwOCA0LjUzNTU0IDcuNTM1NTNDNC43MzA4IDcuMzQwMjcgNC43MzA4IDcuMDIzNjkgNC41MzU1NCA2LjgyODQzTDEuNzA3MTEgNEw0LjUzNTU0IDEuMTcxNTdDNC43MzA4IDAuOTc2MzExIDQuNzMwOCAwLjY1OTcyOCA0LjUzNTU0IDAuNDY0NDY2QzQuMzQwMjcgMC4yNjkyMDQgNC4wMjM2OSAwLjI2OTIwNCAzLjgyODQzIDAuNDY0NDY2TDAuNjQ2NDQ4IDMuNjQ2NDVaTTI2IDMuNUwxIDMuNVY0LjVMMjYgNC41VjMuNVoiIGZpbGw9IiNGRjE1MjEiLz4KPC9zdmc+Cg==");
+            background-repeat: no-repeat;
+            background-position: left center;
+            margin-inline-start: 12px;
+            filter: brightness(100);
+            transition: filter .15s;
+            @include media-breakpoint-up(md) {
+                margin-inline-start: 18px;
+            }
+        }
+
+        &:hover {
+            &:after {
+                filter: brightness(1);
+            }
+        }
+
+        &_vertical {
+            &:after {
+                transform: rotate(-90deg);
+                width: 15px;
+                transition: filter .15s, transform .15s;
+            }
+
+            &.active {
+                &:after {
+                    transform: rotate(-90deg) scaleX(-1);
+                }
+
+            }
+        }
+
+    }
+
+}

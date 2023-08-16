@@ -1,0 +1,82 @@
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+@import "../parts/variables";
+@import "../parts/mixin";
+
+.post-card{
+    &__link{
+        display: block;
+        width: 100%;
+        height: auto;
+        position: relative;
+        &::before{
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.60) 100%);
+            transform: rotate(180deg);
+            z-index: 10;
+            position: absolute;
+        }
+    }
+    &__video,
+    &__image{
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        aspect-ratio: 408/240;
+    }
+    &__content{
+        position: absolute;
+        z-index: 20;
+        padding: 18px;
+        padding-inline-end: 96px; 
+        bottom: 0;
+        width: 100%;
+        @include media-breakpoint-up(lg){
+            padding-inline-end: 106px; 
+        }
+        &::after{
+            content: '';
+            display: block;
+            background-image: url("data:image/svg+xml,%3Csvg width='42' height='8' viewBox='0 0 42 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.647156 3.36495C0.451893 3.56021 0.451893 3.8768 0.647156 4.07206L3.82914 7.25404C4.0244 7.4493 4.34098 7.4493 4.53624 7.25404C4.73151 7.05878 4.73151 6.7422 4.53624 6.54693L1.70782 3.71851L4.53624 0.890079C4.73151 0.694817 4.73151 0.378234 4.53624 0.182972C4.34098 -0.0122902 4.0244 -0.0122902 3.82914 0.182972L0.647156 3.36495ZM42 3.21851L1.00071 3.21851V4.21851L42 4.21851V3.21851Z' fill='white'/%3E%3C/svg%3E");
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 42px;
+            height: 8px;
+            position: absolute;
+            left: 18px;
+            bottom: 14px;
+            @include media-breakpoint-up(lg){
+                bottom: 16px; 
+                left: 26px;
+            }            
+        }
+    }
+    &__category{
+        color: $white;
+        margin-bottom: 4px;
+        font-size: 15px;
+        line-height: 17px;
+        font-weight: 600;
+        display: block;
+        @include media-breakpoint-up(lg){
+            font-size: 16px;
+        }
+    }
+    &__name{
+        color: $white;
+        font-size: 25px;
+        line-height: 22px;
+        font-weight: 600;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        @include media-breakpoint-up(lg){
+
+        }
+    }
+}

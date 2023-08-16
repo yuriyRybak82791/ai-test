@@ -1,0 +1,203 @@
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+@import "../parts/variables";
+@import "../parts/mixin";
+
+.loyalty-program{
+ 
+    &__line{
+        display: flex;
+        height: 202px;
+        background-color: $color-brand-lighter;
+        @include media-breakpoint-up(lg){
+            height: 250px;
+        }
+        @include media-breakpoint-up(xl){
+            height: 330px;
+        }
+        &-2{
+            flex-direction: row-reverse;
+            @include media-breakpoint-up(md){
+                flex-direction: row;
+            }
+        }
+    }
+    &__text-block{
+        &-1,
+        &-2{
+            display: none;
+            width: 50%;
+            @include media-breakpoint-up(md){
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        &.style-two{
+            background-color: $color-brand;
+        }
+    }
+    &__text{
+        color: $color-burgundy;
+        font-size: 140px;
+        line-height: 1;
+        @include media-breakpoint-up(lg){
+            font-size: 185px;
+        }
+        @include media-breakpoint-up(xl){
+            font-size: 253px;
+            margin-bottom: -25px;
+        }
+        &.style-two{
+            color: $white;
+        }
+    }
+    &__mobile-text-block{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        padding: 15px 6px;
+        background-image: url('../../images/loyalty-mob-bg.svg');
+        background-position: center;
+        background-size: cover;
+        text-align: center;
+        @include media-breakpoint-up(md){
+            display: none;
+        }
+    }
+    &__mobile-text{
+        font-size: 68px;
+        line-height: 68px;
+        color: $white;
+    }
+    &__line-block{
+        &-1{
+            display: none;
+            width: 29%;
+            background-image: url('../../images/loyalty-desktop-bg.svg');
+            background-position: center;
+            background-size: cover;
+            @include media-breakpoint-up(md){
+                display: block;
+            }
+            @include media-breakpoint-up(lg){
+                width: 27.34%;
+            }
+            &.style-two{
+                @include media-breakpoint-up(md){
+                    background-image: url('../../images/loyalty-desktop-bg-style-two.svg');
+                }
+            }
+            
+        }
+        &-2{
+            width: 50%; 
+            background-image: url('../../images/loyalty-mob-bg-2.svg');
+            background-position: center;
+            background-size: cover;
+            padding: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include media-breakpoint-up(md){
+                width: 29%;
+                background-image: url('../../images/loyalty-mob-bg.svg');
+            }
+            @include media-breakpoint-up(lg){
+                width: 27.34%;
+            }
+        }
+        &-3{
+            width: 50%;
+            @include media-breakpoint-up(md) {
+                width: 74%;
+            }
+            @include media-breakpoint-up(lg){
+                width: 77.34%;
+            }
+        }
+    }
+    &__logo{
+        width: auto;
+        height: 100%;
+        max-width: 100%;
+        display: block;
+        @include media-breakpoint-up(xl){
+            max-width: 207px;
+        }
+    }
+    &__line-net-video{
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    &__video{
+        width: 50%;
+        @include media-breakpoint-up(md) {
+            width: 26%;
+        }
+        @include media-breakpoint-up(lg){
+            width: 22.66%;
+        }
+        &-link{
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            *{
+                pointer-events: none;
+            }
+            &::before{
+                content: '';
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 10;
+                background-color: rgba($color-red, 0.5);
+            }
+        }
+        &-preview{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        &-subtitle,
+        &-title{
+            position: absolute;
+            right: 0;
+            width: 100%;
+            z-index: 20;
+        }
+        &-subtitle{
+            font-size: 16px;
+            line-height: 19px;
+            color: $white;
+            padding: 6px 9px;
+            top: 0;
+            @include media-breakpoint-up(xl){
+                padding: 12px 15px;
+                font-size: 15px;
+                line-height: 16px;
+            }
+        }
+        &-title{
+            font-weight: 600;
+            flex: 15px;
+            line-height: 18px;
+            padding: 10px 14px;
+            bottom: 0;
+            color: $white;
+            @include media-breakpoint-up(xl){
+                padding: 16px 22px;
+                font-size: 22px;
+                line-height: 24px;
+            }
+        }
+    }
+}

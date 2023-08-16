@@ -1,0 +1,124 @@
+.accept-cookie-box{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: $white;
+    width: 100%;
+    z-index: 9000;
+    box-shadow: 0px -7px 17px 0px rgba(0, 0, 0, 0.10);
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s linear;
+    transition-property:opacity, visibility;
+    &.opened{
+        visibility: visible;
+        opacity: 1;
+    }
+    @include media-breakpoint-up(lg){
+        box-shadow: 0px -8px 35px 0px rgba(0, 0, 0, 0.10);
+    }
+    &__container{
+        padding: 0;
+    }
+    &__inner{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px 30px;
+        padding: 28px;
+        @include media-breakpoint-up(lg){
+            flex-direction: row-reverse;
+            padding: 25px 20px 25px 30px;
+            justify-content: space-between;
+        }
+    }
+    &__text{
+        max-width: 248px;
+        width: 100%;
+        text-align: center;
+        @include media-breakpoint-up(lg){
+            max-width: none;
+            text-align: left;
+        }
+        p{
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+        *{
+            font-size: 15px;
+            line-height: 19px;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+    }
+    &__buttons{
+        max-width: 248px;
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        @include media-breakpoint-up(lg){
+            max-width: none;
+            width: auto;
+        }
+    }
+    &__close-btn{
+        display: none;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        background: transparent;
+        border: none;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        path{
+            transition:stroke .3s linear;
+        }
+        &:hover{
+            path{
+                stroke: $color-brand;
+            }
+        }
+        @include media-breakpoint-up(lg){
+            display: flex;
+        }
+    }
+    &__accept-btn,
+    &__reject-btn{
+        border: 1px solid $color-brand;
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 600;
+        padding: 5px 16px;
+        transition: .3s linear;
+        cursor: pointer;
+        transition-property: color, background-color;
+        @include media-breakpoint-up(lg){
+            font-size: 18px;
+            line-height: 26px;
+            padding: 8px 20px;
+        }
+    }
+    &__accept-btn{
+        background-color: $color-brand;
+        color: $white;
+        &:hover{
+            background-color: $white;
+            color: $color-brand;
+        }
+    }
+    &__reject-btn{
+        background-color: $white;
+        color: $color-brand;
+        &:hover{
+            background-color: $color-brand;
+            color: $white;
+        }
+        @include media-breakpoint-up(lg){
+            display:none;
+        }
+    }
+}

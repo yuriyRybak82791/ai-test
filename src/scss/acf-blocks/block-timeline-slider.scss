@@ -1,0 +1,266 @@
+@import "../bootstrap/variables";
+@import "../bootstrap/mixins";
+@import "../parts/variables";
+@import "../parts/mixin";
+
+
+.timeline-slider {
+    overflow: hidden;
+
+    &__title {
+        color: $color-brand;
+        margin-bottom: 28px;
+        font-size: 50px;
+        line-height: 1;
+        text-align: center;
+        @include media-breakpoint-up(lg) {
+            font-size: 100px;
+            margin-bottom: 30px;
+        }
+    }
+
+    &__timeline-slider {
+        background-color: $black;
+        overflow: visible;
+        height: 64px;
+        display: flex;
+        align-items: center;
+
+        &-outer {
+
+            &:after {
+                position: absolute;
+                height: 100%;
+                width: 100vw;
+                content: "";
+                top: 0;
+                background: linear-gradient(to left, $black 0%, $black calc(100% - 80px), transparent 100%);
+                pointer-events: none;
+                left: calc(100% - 100px);
+                z-index: 1;
+            }
+
+            @include media-breakpoint-up(lg) {
+                padding-left: 100px;
+                padding-right: 100px;
+            }
+
+            @include media-breakpoint-up(xl) {
+                padding-left: 230px;
+                padding-right: 26px;
+            }
+        }
+
+
+        &__slide {
+            color: rgba($white, .5);
+            transition: color .3s;
+            text-align: center;
+            cursor: pointer;
+            line-height: 1.1;
+            padding: calc($spacer * 2) 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: unset;
+            direction: ltr;
+            font-size: 22px;
+
+            @include media-breakpoint-up(lg) {
+                font-size: 27px;
+            }
+
+            &:not(:last-child) {
+                &:before {
+                    border-top: 1px dashed #7f7f7f;
+                    content: "";
+                    height: 1px;
+                    right: 80%;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 40%;
+                }
+            }
+
+            &:hover {
+                color: $white;
+                font-weight: 600;
+            }
+
+            &.swiper-slide-thumb-active {
+                color: $color-brand;
+                font-weight: 600;
+            }
+        }
+
+        .link-today {
+            font-size: 28px;
+        }
+
+        &__slide-year {
+            position: relative;
+            z-index: 1;
+            background-color: $black;
+            padding: 0 $spacer;
+        }
+
+        &__slider-navigation {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            //left: 0;
+            top: 100%;
+            bottom: 0;
+            gap: 20px;
+            background-color: $black;
+            z-index: 1;
+            height: 64px;
+            left: 25px;
+
+            @include media-breakpoint-up(xxl) {
+                left: calc((100vw - 1440px) / 2 + 25px);
+            }
+
+            &:before {
+                position: absolute;
+                height: 100%;
+                width: 100vw;
+                content: "";
+                top: 0;
+                background: linear-gradient(to right, $black 0%, $black calc(100% - 80px), transparent 100%);
+                right: -100px;
+            }
+
+            .button-prev, .button-next {
+                background-repeat: no-repeat;
+                background-position: center;
+                width: 40px;
+                height: 100%;
+                background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAxOCAzMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE2IDJMMyAxNUwxNiAyOCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjwvc3ZnPgo=");
+                cursor: pointer;
+                position: relative;
+                z-index: 1;
+
+                &.swiper-button-disabled {
+                    opacity: .3;
+                    cursor: auto;
+                }
+            }
+
+            .button-prev {
+                transform: scaleX(-1);
+            }
+        }
+
+        &__link-today {
+            font-style: normal;
+            color: $white;
+            position: absolute;
+            z-index: 3;
+            bottom: 0;
+            cursor: pointer;
+            height: 68px;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            right: calc((100vw - 1440px) / 2 + 95px);
+
+            span {
+                position: relative;
+            }
+
+            &:before {
+                position: absolute;
+                height: 100%;
+                width: 100vw;
+                top: 0;
+                content: "";
+                left: -100px;
+                background: linear-gradient(to left, $black 0%, $black calc(100% - 80px), transparent 100%);
+                pointer-events: none;
+            }
+
+
+            @include media-breakpoint-up(lg) {
+                font-size: 28px;
+            }
+        }
+
+    }
+
+    &__timeline-images {
+        position: relative;
+        z-index: 2;
+        aspect-ratio: 390/560;
+        width: 100%;
+        background-color: $color-brand-dark;
+
+        @include media-breakpoint-up(sm) {
+            //min-height: 460px;
+            aspect-ratio: 1440/698;
+            max-height: 698px;
+        }
+
+        &__slider {
+            height: 100%;
+            overflow: visible;
+        }
+
+        &__item {
+            max-width: 1440px;
+            margin-inline: auto;
+
+            &-wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+        }
+
+        &__image {
+            max-width: 100%;
+            height: auto;
+
+            &_desktop {
+                @include media-breakpoint-between(sm, md) {
+                    object-position: center right;
+                }
+            }
+
+            &_mobile {
+
+            }
+        }
+
+        &__text {
+            font-weight: 600;
+            line-height: 93% !important;
+            color: $white;
+            position: absolute;
+            margin: 0;
+            text-align: unset;
+            bottom: 11vw;
+            right: 37vw;
+            padding-left: calc($spacer * 2);
+
+            /* Temporary solution! Don't forget to remove */
+            opacity: 0;
+            pointer-events: none;
+            /* *** */
+
+            @include media-breakpoint-up(sm) {
+                bottom: .3em;
+                right: 1em;
+            }
+            @include responsive-font-size(28px, 55px);
+            @include media-breakpoint-up(xl) {
+                font-size: 55.0846px;
+            }
+        }
+
+    }
+}
